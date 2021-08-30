@@ -1,5 +1,6 @@
 FROM php:7.4-fpm
 
+
 # Arguments defined in docker-compose.yml
 ARG user
 ARG uid
@@ -18,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     && docker-php-ext-install zip
+
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp
 RUN cd /usr/src/php/ext/gd && make

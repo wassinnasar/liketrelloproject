@@ -27,6 +27,8 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    volumes:
+      - c:/data:/var/lib/mysql
     networks:
       - laravel
 
@@ -42,6 +44,21 @@ services:
     networks:
       - laravel
 
+  npm:
+    image: node:latest
+    container_name: npm
+    volumes:
+      - ./:/var/www/
+    # ports:
+     #   - "8000:80"
+    #   - 3000:3000
+    #   - 3001:3001
+    working_dir: /var/www/
+    entrypoint: ['npm']
+    networks:
+      - laravel
+
 networks:
   laravel:
     driver: bridge
+

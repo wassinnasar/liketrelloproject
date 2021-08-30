@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeskController;
+use App\Http\Controllers\DeskListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('desks', 'DeskController');
+Route::apiResource('desks-lists', 'DeskListController');
+//Route::apiResource('desks', 'DeskController')->only(['show','index','destroy','update','store']);
+//Route::apiResources([
+//    'desks'=> 'DeskController',
+//    'desks-lists'=> 'DeskListController',
+//]);
